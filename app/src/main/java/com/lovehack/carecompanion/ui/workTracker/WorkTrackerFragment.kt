@@ -1,4 +1,4 @@
-package com.lovehack.carecompanion.ui.gallery
+package com.lovehack.carecompanion.ui.workTracker
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
 
-class ReminderFragment : Fragment() {
+class WorkTrackerFragment : Fragment() {
 
-    private lateinit var reminderViewModel: ReminderViewModel
+    private lateinit var workTrackerViewModel: WorkTrackerViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        reminderViewModel =
-                ViewModelProviders.of(this).get(ReminderViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_reminders, container, false)
-        val textView: TextView = root.findViewById(R.id.text_reminders)
-        reminderViewModel.text.observe(viewLifecycleOwner, Observer {
+        workTrackerViewModel =
+                ViewModelProviders.of(this).get(WorkTrackerViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_work_tracker, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        workTrackerViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

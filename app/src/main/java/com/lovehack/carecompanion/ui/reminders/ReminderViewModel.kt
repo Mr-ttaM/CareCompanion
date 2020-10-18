@@ -1,4 +1,4 @@
-package com.lovehack.carecompanion.ui.gallery
+package com.lovehack.carecompanion.ui.reminders
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

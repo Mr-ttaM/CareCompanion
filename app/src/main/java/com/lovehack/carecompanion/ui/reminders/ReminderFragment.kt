@@ -1,4 +1,4 @@
-package com.lovehack.carecompanion.ui.home
+package com.lovehack.carecompanion.ui.reminders
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
 
-class HomeFragment : Fragment() {
+class ReminderFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var reminderViewModel: ReminderViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        reminderViewModel =
+                ViewModelProviders.of(this).get(ReminderViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_reminders, container, false)
+        val textView: TextView = root.findViewById(R.id.text_reminders)
+        reminderViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
