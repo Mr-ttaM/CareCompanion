@@ -22,10 +22,10 @@ class WorkTrackerFragment : Fragment() {
         workTrackerViewModel =
                 ViewModelProviders.of(this).get(WorkTrackerViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_work_tracker, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        workTrackerViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+//        val textView: TextView = root.findViewById(R.id.text_home)
+//        workTrackerViewModel.text.observe(viewLifecycleOwner, Observer {
+//            textView.text = it
+//        })
         return root
     }
 }

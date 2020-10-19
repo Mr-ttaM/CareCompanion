@@ -6,36 +6,6 @@
     app:startDestination="@+id/nav_reminders">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.lovehack.carecompanion.ui.workTracker.WorkTrackerFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_work_tracker">
-
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.lovehack.carecompanion.ui.workTracker.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.lovehack.carecompanion.ui.puppies.PuppiesFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_puppies" />
-
-    <fragment
         android:id="@+id/nav_reminders"
         android:name="com.lovehack.carecompanion.ui.reminders.ReminderFragment"
         android:label="@string/menu_reminders"
@@ -52,5 +22,11 @@
         android:name="com.lovehack.carecompanion.ui.puppies.PuppiesFragment"
         android:label="@string/menu_puppies"
         tools:layout="@layout/fragment_puppies" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.lovehack.carecompanion.ui.help.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
 
 </navigation>

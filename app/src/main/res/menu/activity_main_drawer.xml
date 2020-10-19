@@ -16,5 +16,9 @@
             android:id="@+id/nav_puppies"
             android:icon="@drawable/ic_happy_face"
             android:title="@string/menu_puppies" />
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_happy_face"
+            android:title="@string/menu_help" />
     </group>
 </menu>
