@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.BuildConfig
 import com.lovehack.carecompanion.R
+import com.lovehack.carecompanion.helpers.LoopLocalVideo
 
 
 class AboutFragment : Fragment() {
@@ -25,11 +26,7 @@ class AboutFragment : Fragment() {
                 ViewModelProviders.of(this).get(AboutViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_about, container, false)
         val videoView: VideoView = root.findViewById(R.id.videoView)
-        videoView.setOnPreparedListener { mp -> mp.isLooping = true }
-        val uri: Uri = Uri.parse("android.resource://" + BuildConfig.APPLICATION_ID + "/" + R.raw.drink)
-        println(uri.path)
-        videoView.setVideoURI(uri)
-        videoView.start()
+        LoopLocalVideo(videoView, R.raw.meal)
 
         return root
     }
