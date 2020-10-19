@@ -22,10 +22,7 @@ class ReminderFragment : Fragment() {
         reminderViewModel =
                 ViewModelProviders.of(this).get(ReminderViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_reminders, container, false)
-        val textView: TextView = root.findViewById(R.id.text_reminders)
-        reminderViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }
