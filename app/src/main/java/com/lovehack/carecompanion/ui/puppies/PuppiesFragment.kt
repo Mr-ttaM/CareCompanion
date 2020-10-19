@@ -34,6 +34,10 @@ class PuppiesFragment : Fragment() {
                 gimmeRandomPupper()
             }
         })
+
+        // load the first pupper
+        gimmeRandomPupper()
+
         return root
     }
 
