@@ -19,7 +19,8 @@
     <string name="home_second">Home Second</string>
     <string name="break_reminder_button_text_start">Start Session</string>
     <string name="break_reminder_button_text_stop">Stop Session</string>
-    <string name="break_reminder_text_start">Remind me to take a break every    mins</string>
+    <string name="break_reminder_text_start_1">Remind me to take a break every</string>
+    <string name="break_reminder_text_start_2">mins</string>
     <string name="break_reminder_going_text">You have been going for %1$d hours, %2$d minutes</string>
     <string name="break_reminder_until_next_text">%1$d:%2$d minutes until your next break</string>
 
