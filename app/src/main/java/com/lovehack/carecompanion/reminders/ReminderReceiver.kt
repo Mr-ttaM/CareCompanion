@@ -8,14 +8,20 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.lovehack.carecompanion.R
+import kotlin.random.Random
 
 class ReminderReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-        Toast.makeText(context, "Received message ${intent?.action}", Toast.LENGTH_SHORT).show()
-        val title: String? = intent?.getStringExtra("title")
-        val body: String? = intent?.getStringExtra("body")
-        Toast.makeText(context, "Received title $title", Toast.LENGTH_SHORT).show()
+        var title: String = "Notification title"
+        var body: String = "This is the notification body"
 
+        if (context != null) {
+            val randomNum = Random.nextInt(from = 0, until = 3)
+            val titleId = "${intent?.action}_reminder_title"
+            title = context.getString(context.resources.getIdentifier(titleId, "string", context.packageName))
+            val body_id = "${intent?.action}_reminder_body_$randomNum"
+            body = context.getString(context.resources.getIdentifier(body_id, "string", context.packageName))
+        }
 
         val notification = Notification.Builder(context, Notification.CATEGORY_REMINDER).run {
             setSmallIcon(R.drawable.ic_menu_camera)
@@ -28,3 +34,8 @@ class ReminderReceiver: BroadcastReceiver() {
         manager.notify(0, notification)
     }
 }
+
+// How to trigger notification from somewhere else
+//            val intent = Intent(view.context, ReminderReceiver::class.java)
+//            intent.action = "meal"
+//            view.context.sendBroadcast(intent)

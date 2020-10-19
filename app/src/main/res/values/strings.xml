@@ -25,6 +25,16 @@
     <string name="break_reminder_going_text">You have been going for %1$d hours, %2$d minutes</string>
     <string name="break_reminder_until_next_text">%1$d:%2$d minutes until your next break</string>
 
+    <string name="water_reminder_title">Water reminder</string>
+    <string name="water_reminder_body_0">Remember to drink water! (0)</string>
+    <string name="water_reminder_body_1">Remember to drink water! (1)</string>
+    <string name="water_reminder_body_2">Remember to drink water! (2)</string>
+
+    <string name="meal_reminder_title">Meal reminder</string>
+    <string name="meal_reminder_body_0">Remember to eat! (0)</string>
+    <string name="meal_reminder_body_1">Remember to eat! (1)</string>
+    <string name="meal_reminder_body_2">Remember to eat! (2)</string>
+
     <string name="puppies_button">Give me puppy!</string>
 
 </resources>

@@ -42,34 +42,10 @@ class WorkTrackerFragment : Fragment() {
             spinner.adapter = adapter
         }
 
-        val button:Button = root.findViewById(R.id.button)
+        val button:Button = root.findViewById(R.id.break_button)
         button.setOnClickListener {view ->
-            val intent = Intent(view.context, ReminderReceiver::class.java).let {
-                PendingIntent.getBroadcast(view.context, 0, it, 0)
-            }
-            intent.send()
         }
 
         return root
     }
-
-    fun sendNotification(view: View) {
-        Toast.makeText(view.context, "sendNotification called", Toast.LENGTH_SHORT).show()
-
-        val intent = Intent(view.context, ReminderReceiver::class.java)
-        intent.putExtra("title", "Notification title")
-        intent.putExtra("body", "This is the message for the notification")
-        view.context.sendBroadcast(intent)
-//        intent.putExtra("title", "Notification title")
-//        intent.putExtra("body", "This is the message for the notification")
-//        val pending = PendingIntent.getActivity(view.context, 0, intent, 0)
-//        val intent = Intent(view.context, ReminderReceiver::class.java)
-//            .let {
-//            it.putExtra("title", "Notification title")
-//            it.putExtra("body", "This is the message for the notification")
-//            PendingIntent.getBroadcast(view.context, 0, it, 0)
-//        }
-//        view.context.sendBroadcast(intent)
-    }
-
 }
