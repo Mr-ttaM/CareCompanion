@@ -1,16 +1,24 @@
 package com.lovehack.carecompanion.ui.workTracker
 
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
 import kotlinx.android.synthetic.main.fragment_work_tracker.*
+import com.lovehack.carecompanion.reminders.ReminderReceiver
 
 class WorkTrackerFragment : Fragment() {
 
@@ -38,7 +46,6 @@ class WorkTrackerFragment : Fragment() {
             spinner.adapter = adapter
         }
 
-
         val breakButton : Button = root.findViewById(R.id.break_button)
         breakButton.setOnClickListener {
             if(isStopped) {
@@ -54,7 +61,4 @@ class WorkTrackerFragment : Fragment() {
 
         return root
     }
-
-
-
 }

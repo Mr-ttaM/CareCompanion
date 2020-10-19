@@ -10,7 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_reminders">Dashboard</string>
+    <string name="menu_reminders">Reminders</string>
     <string name="menu_work_tracker">Break Tracker</string>
     <string name="menu_puppies">Puppies</string>
     <string name="menu_settings">Settings</string>
@@ -39,6 +39,16 @@
     <string name="reminder_title_water">Water</string>
     <string name="reminder_title_string_1">Remind me to drink</string>
     <string name="reminder_title_string_2">times per day</string>
+
+    <string name="water_reminder_title">Water reminder</string>
+    <string name="water_reminder_body_0">Remember to drink water! (0)</string>
+    <string name="water_reminder_body_1">Remember to drink water! (1)</string>
+    <string name="water_reminder_body_2">Remember to drink water! (2)</string>
+
+    <string name="meal_reminder_title">Meal reminder</string>
+    <string name="meal_reminder_body_0">Remember to eat! (0)</string>
+    <string name="meal_reminder_body_1">Remember to eat! (1)</string>
+    <string name="meal_reminder_body_2">Remember to eat! (2)</string>
 
     <string name="puppies_button">Give me puppy!</string>
 

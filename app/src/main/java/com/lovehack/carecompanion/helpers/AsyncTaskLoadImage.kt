@@ -3,14 +3,12 @@ package com.lovehack.carecompanion.helpers
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
-import android.view.View
 import android.widget.ImageView
-import java.io.BufferedInputStream
 import java.net.URL
 
-internal class AsyncTaskLoadImage(imv: ImageView) :
+internal class AsyncTaskLoadImage(imageView: ImageView) :
     AsyncTask<Any?, Void?, Bitmap?>() {
-    private val imv: ImageView?
+    private val imageView: ImageView?
     private val path: String
 
     override fun doInBackground(vararg params: Any?): Bitmap? {
@@ -20,18 +18,24 @@ internal class AsyncTaskLoadImage(imv: ImageView) :
         return BitmapFactory.decodeStream(url.openConnection().getInputStream())
     }
 
+    override fun onPreExecute() {
+        super.onPreExecute()
+        // TODO loading spinner?
+        println("onPreExecute...")
+    }
+
     override fun onPostExecute(result: Bitmap?) {
-        if (imv!!.tag.toString() != path) {
+        // TODO add resilience / error doggo etc
+        if (imageView!!.tag.toString() != path) {
             return
         }
         if (result != null) {
-            imv.setImageBitmap(result)
+            imageView.setImageBitmap(result)
         }
     }
 
     init {
-        this.imv = imv
-        path = imv.tag.toString()
+        this.imageView = imageView
+        path = imageView.tag.toString()
     }
 }
-
