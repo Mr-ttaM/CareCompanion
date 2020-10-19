@@ -3,9 +3,11 @@ package com.lovehack.carecompanion.ui.workTracker
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Button
@@ -15,12 +17,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
+import kotlinx.android.synthetic.main.fragment_work_tracker.*
 import com.lovehack.carecompanion.reminders.ReminderReceiver
 
 class WorkTrackerFragment : Fragment() {
 
     private lateinit var workTrackerViewModel: WorkTrackerViewModel
     private var isStopped : Boolean = true
+    private lateinit var timer: CountDownTimer
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -42,9 +46,18 @@ class WorkTrackerFragment : Fragment() {
             spinner.adapter = adapter
         }
 
-        val button:Button = root.findViewById(R.id.break_button)
-        button.setOnClickListener {view ->
+        val breakButton : Button = root.findViewById(R.id.break_button)
+        breakButton.setOnClickListener {
+            if(isStopped) {
+                isStopped = false
+                Toast.makeText(root.context, "Is no longer stopped", Toast.LENGTH_SHORT).show()
+                break_button.text = getString(R.string.break_reminder_button_text_stop)
+            } else {
+                isStopped = true
+                Toast.makeText(root.context, "Is no longer running", Toast.LENGTH_SHORT).show()
+                break_button.text = getString(R.string.break_reminder_button_text_start)            }
         }
+
 
         return root
     }
