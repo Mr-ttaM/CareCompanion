@@ -58,4 +58,20 @@
     <string name="puppies_button">Give me puppy!</string>
     <string name="time_format">HH:mm  &#128394;</string>
 
+    <string name="help_top">Care Companion wants you to be feeling your best 😊</string>
+    <string name="help_water_title">Water 💧💧💧</string>
+    <string name="help_water_1">Generally speaking, the average adult should consume around 8 glasses of water per day.</string>
+    <string name="help_water_2">If you struggle to remember to drink water throughout the day, we can help you achieve your daily water intake!</string>
+    <string name="help_water_3">If you want to keep things simple, these guidelines should apply to the majority of people</string>
+    <string name="help_water_4">- When you\'re thirsty, drink</string>
+    <string name="help_water_5">- When you\'re not thirsty any more, stop</string>
+    <string name="help_water_6">- During high heat and exercise, drink enough to compensate for the lost fluids</string>
+    <string name="help_water_7">- That\'s it!</string>
+    <string name="help_meal_title">Meal 🍎🍔🍉</string>
+    <string name="help_meal_1">Not everyone remembers when to eat each day. Even if our stomach is grumbling, some struggle to take note of this!</string>
+    <string name="help_meal_2">The meal reminder screen takes into consideration the need for 3 square meals a day. Enable or disable notifications for each meal type as desired.</string>
+    <string name="help_sleep_title">Sleep 😴🛏️💤</string>
+    <string name="help_sleep_1">The National Sleep Foundation recommends 7–9 hours of sleep a night for adults up to the age of 65, and 7–8 hours for those over 65. Some people naturally sleep slightly more or slightly less than these recommended hours.</string>
+    <string name="help_break_title">Mental Breaks 👨‍🏭 🏭👨‍💻</string>
+
 </resources>
