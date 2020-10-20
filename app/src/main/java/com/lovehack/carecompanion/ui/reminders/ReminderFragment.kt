@@ -1,7 +1,6 @@
 package com.lovehack.carecompanion.ui.reminders
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +9,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.TimePicker
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
-import java.sql.Time
 import java.text.SimpleDateFormat
-import java.time.LocalTime
 import java.util.*
 
 class ReminderFragment : Fragment() {
@@ -52,18 +47,45 @@ class ReminderFragment : Fragment() {
         val wakeUpTimePicker : TextView = root.findViewById(R.id.wake_up_time_picker)
         val bedtimeTimePicker : TextView = root.findViewById(R.id.bedtime_time_picker)
 
+        breakfastTimePicker.setOnClickListener {
+            pickTime(breakfastTimePicker, root)
+        }
+
+        lunchTimePicker.setOnClickListener {
+            pickTime(lunchTimePicker, root)
+        }
+
+        dinnerTimePicker.setOnClickListener {
+            pickTime(dinnerTimePicker, root)
+        }
+
+        wakeUpTimePicker.setOnClickListener {
+            pickTime(wakeUpTimePicker, root)
+        }
+
         bedtimeTimePicker.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                bedtimeTimePicker.text = SimpleDateFormat(getString(R.string.time_format)).format(cal.time)
-            }
-            TimePickerDialog(root.context, bedtimeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            pickTime(bedtimeTimePicker, root)
         }
 
 
 
         return root
+    }
+
+    private fun pickTime(bedtimeTimePicker: TextView, root: View) {
+        val cal = Calendar.getInstance()
+        val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+            cal.set(Calendar.HOUR_OF_DAY, hour)
+            cal.set(Calendar.MINUTE, minute)
+            bedtimeTimePicker.text =
+                SimpleDateFormat(getString(R.string.time_format)).format(cal.time)
+        }
+        TimePickerDialog(
+            root.context,
+            bedtimeSetListener,
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE),
+            true
+        ).show()
     }
 }
