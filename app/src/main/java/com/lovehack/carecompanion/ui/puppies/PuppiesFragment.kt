@@ -34,6 +34,10 @@ class PuppiesFragment : Fragment() {
                 gimmeRandomPupper()
             }
         })
+
+        // load the first pupper
+        gimmeRandomPupper()
+
         return root
     }
 
@@ -43,6 +47,7 @@ class PuppiesFragment : Fragment() {
 
     fun getRandomPupperUrl(): String {
         // Sample output from https://random.dog/doggos?filter=mp4,webm
+        // TODO pull this from api instead of stubbing
         val randomPupperPaths = arrayOf(
             "00186969-c51d-462b-948b-30a7e1735908.jpg",
             "00564ba3-e5cb-4b2b-8d97-c65a9ef26c23.png",
