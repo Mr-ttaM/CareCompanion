@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.TimePicker
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +18,7 @@ import com.lovehack.carecompanion.R
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.time.LocalTime
+import java.util.*
 import java.util.*
 
 class ReminderFragment : Fragment() {
@@ -33,6 +34,9 @@ class ReminderFragment : Fragment() {
         reminderViewModel =
                 ViewModelProviders.of(this).get(ReminderViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_reminders, container, false)
+
+        setUpSwitchListeners(root)
+
 
         val waterSpinner : Spinner = root.findViewById(R.id.water_reminder_spinner)
         ArrayAdapter.createFromResource(
@@ -52,18 +56,60 @@ class ReminderFragment : Fragment() {
         val wakeUpTimePicker : TextView = root.findViewById(R.id.wake_up_time_picker)
         val bedtimeTimePicker : TextView = root.findViewById(R.id.bedtime_time_picker)
 
+        breakfastTimePicker.setOnClickListener {
+            pickTime(breakfastTimePicker, root)
+        }
+
+        lunchTimePicker.setOnClickListener {
+            pickTime(lunchTimePicker, root)
+        }
+
+        dinnerTimePicker.setOnClickListener {
+            pickTime(dinnerTimePicker, root)
+        }
+
+        wakeUpTimePicker.setOnClickListener {
+            pickTime(wakeUpTimePicker, root)
+        }
+
         bedtimeTimePicker.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                bedtimeTimePicker.text = SimpleDateFormat(getString(R.string.time_format)).format(cal.time)
-            }
-            TimePickerDialog(root.context, bedtimeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+            pickTime(bedtimeTimePicker, root)
         }
 
 
 
         return root
+    }
+
+    fun setUpSwitchListeners(root: View) {
+        setUpSwitchListener(root.findViewById(R.id.water_reminder_switch), root.findViewById(R.id.water_contents))
+        setUpSwitchListener(root.findViewById(R.id.meal_reminder_switch), root.findViewById(R.id.meal_contents))
+        setUpSwitchListener(root.findViewById(R.id.sleep_reminder_switch), root.findViewById(R.id.sleep_contents))
+    }
+
+    fun setUpSwitchListener(switch: Switch, view: View) {
+        switch.setOnClickListener { it as Switch
+            view.visibility = if (it.isChecked) View.VISIBLE else View.GONE
+        }
+
+        // set initial state
+        view.visibility = if (switch.isChecked) View.VISIBLE else View.GONE
+    }
+
+    private fun pickTime(bedtimeTimePicker: TextView, root: View) {
+        val cal = Calendar.getInstance()
+        val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+            cal.set(Calendar.HOUR_OF_DAY, hour)
+            cal.set(Calendar.MINUTE, minute)
+            bedtimeTimePicker.text =
+                SimpleDateFormat(getString(R.string.time_format)).format(cal.time)
+        }
+        TimePickerDialog(
+            root.context,
+            bedtimeSetListener,
+            cal.get(Calendar.HOUR_OF_DAY),
+            cal.get(Calendar.MINUTE),
+            true
+        ).show()
     }
 }
