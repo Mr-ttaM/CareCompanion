@@ -8,9 +8,16 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.lovehack.carecompanion.R
+import com.lovehack.carecompanion.reminders.ReminderManager
+import com.lovehack.carecompanion.reminders.ReminderWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_work_tracker.*
+import java.util.concurrent.TimeUnit
 
 class WorkTrackerFragment : Fragment() {
 
@@ -49,6 +56,12 @@ class WorkTrackerFragment : Fragment() {
 
         val breakButton : Button = root.findViewById(R.id.break_button)
         breakButton.setOnClickListener {
+//            val workRequest = OneTimeWorkRequestBuilder<ReminderWorker>()
+//                .addTag("meal")
+//                .setInitialDelay(3, TimeUnit.SECONDS)
+//                .build()
+//            WorkManager.getInstance(requireView().context).enqueue(workRequest)
+
             if(isStopped) {
                 isStopped = false
                 breakTimeTextView1.visibility = View.INVISIBLE
@@ -71,7 +84,6 @@ class WorkTrackerFragment : Fragment() {
                 countdown_timer.cancel()
                 break_button.text = getString(R.string.break_reminder_button_text_start)            }
         }
-
 
         return root
     }
