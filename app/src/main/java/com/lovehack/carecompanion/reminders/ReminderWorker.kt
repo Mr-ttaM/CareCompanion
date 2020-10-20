@@ -19,7 +19,7 @@ class ReminderWorker(appContext: Context, workerParams: WorkerParameters) : Work
         val body = context.getString(context.resources.getIdentifier(bodyId, "string", context.packageName))
 
         val notification = Notification.Builder(this.applicationContext, "reminders_channel").run {
-            setSmallIcon(R.drawable.ic_happy_face)
+            setSmallIcon(R.drawable.ic_bedtime_black)
             setContentTitle(context.getString(R.string.bedtime_reminder_title))
             setContentText(body)
             build()

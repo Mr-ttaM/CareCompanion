@@ -56,11 +56,11 @@ class WorkTrackerFragment : Fragment() {
 
         val breakButton : Button = root.findViewById(R.id.break_button)
         breakButton.setOnClickListener {
-            val workRequest = OneTimeWorkRequestBuilder<ReminderWorker>()
-                .addTag("meal")
-                .setInitialDelay(3, TimeUnit.SECONDS)
-                .build()
-            WorkManager.getInstance(requireView().context).enqueue(workRequest)
+//            val workRequest = OneTimeWorkRequestBuilder<ReminderWorker>()
+//                .addTag("meal")
+//                .setInitialDelay(3, TimeUnit.SECONDS)
+//                .build()
+//            WorkManager.getInstance(requireView().context).enqueue(workRequest)
 
             if(isStopped) {
                 isStopped = false
