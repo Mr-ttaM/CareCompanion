@@ -25,8 +25,6 @@ class AboutFragment : Fragment() {
         aboutViewModel =
                 ViewModelProviders.of(this).get(AboutViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_about, container, false)
-        val videoView: VideoView = root.findViewById(R.id.videoView)
-        LoopLocalVideo(videoView, R.raw.meal)
 
         return root
     }

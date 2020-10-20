@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">CareCompanion</string>
+    <string name="app_name">Care Companion</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">CareCompanion</string>
+    <string name="nav_header_title">Care Companion</string>
     <string name="nav_header_subtitle">Your one stop shop for mental wellbeing :)</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -82,4 +82,6 @@
     <string name="help_break_5">- Take a walk</string>
     <string name="help_break_6">- Drink a glass of water!</string>
     <string name="help_break_7">- Practise mindfulness. Take some time to think about what you’re grateful for</string>
+
+    <string name="about_subtext">Developed during LoveHack, for you</string>
 </resources>
