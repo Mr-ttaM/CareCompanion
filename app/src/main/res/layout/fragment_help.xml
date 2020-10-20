@@ -34,7 +34,7 @@
 
             <TextView
                 android:id="@+id/help_water_title"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="8dp"
@@ -57,7 +57,7 @@
 
             <TextView
                 android:id="@+id/help_water_1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/help_water_1"
@@ -69,8 +69,9 @@
 
             <TextView
                 android:id="@+id/help_water_2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/help_water_2"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/help_water_3"
@@ -80,20 +81,21 @@
 
             <TextView
                 android:id="@+id/help_water_3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/help_water_3"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/help_meal_title"
+                app:layout_constraintBottom_toTopOf="@+id/help_water_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/help_water_1" />
+                app:layout_constraintTop_toBottomOf="@+id/help_water_2" />
 
             <TextView
                 android:id="@+id/help_water_4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/help_water_4"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/help_water_5"
@@ -103,8 +105,9 @@
 
             <TextView
                 android:id="@+id/help_water_5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/help_water_5"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/help_water_6"
@@ -114,7 +117,7 @@
 
             <TextView
                 android:id="@+id/help_water_6"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/help_water_6"
                 android:textSize="18sp"
@@ -125,7 +128,7 @@
 
             <TextView
                 android:id="@+id/help_water_7"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/help_water_7"
                 android:textSize="18sp"
@@ -144,13 +147,13 @@
                 app:layout_constraintBottom_toTopOf="@+id/mealVideoView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/help_water_3" />
+                app:layout_constraintTop_toBottomOf="@+id/help_water_7" />
 
             <VideoView
                 android:id="@+id/mealVideoView"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                app:layout_constraintBottom_toTopOf="@+id/help_sleep_title"
+                app:layout_constraintBottom_toTopOf="@+id/help_meal_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/help_meal_title" />
@@ -195,9 +198,9 @@
                 android:id="@+id/sleepVideoView"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/help_sleep_1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/help_sleep_title"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/help_sleep_title" />
 
             <TextView
@@ -205,45 +208,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/help_water_1"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/help_sleep_2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sleepVideoView" />
-
-            <TextView
-                android:id="@+id/help_sleep_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/help_water_2"
+                android:text="@string/help_sleep_1"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/help_break_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/help_sleep_1" />
+                app:layout_constraintTop_toBottomOf="@+id/sleepVideoView" />
 
             <TextView
                 android:id="@+id/help_break_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginBottom="1dp"
                 android:text="@string/help_break_title"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/breakVideoView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/help_sleep_2" />
+                app:layout_constraintTop_toBottomOf="@+id/help_sleep_1" />
 
-            <VideoView
-                android:id="@+id/breakVideoView"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/help_sleep_title" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
