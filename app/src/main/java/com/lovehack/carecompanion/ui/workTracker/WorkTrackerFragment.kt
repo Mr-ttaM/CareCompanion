@@ -11,8 +11,15 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.lovehack.carecompanion.R
+import com.lovehack.carecompanion.reminders.ReminderManager
+import com.lovehack.carecompanion.reminders.ReminderWorker
 import kotlinx.android.synthetic.main.fragment_work_tracker.*
+import java.util.concurrent.TimeUnit
 
 class WorkTrackerFragment : Fragment() {
 
@@ -42,6 +49,12 @@ class WorkTrackerFragment : Fragment() {
 
         val breakButton : Button = root.findViewById(R.id.break_button)
         breakButton.setOnClickListener {
+            val workRequest = OneTimeWorkRequestBuilder<ReminderWorker>()
+                .addTag("meal")
+                .setInitialDelay(3, TimeUnit.SECONDS)
+                .build()
+            WorkManager.getInstance(requireView().context).enqueue(workRequest)
+
             if(isStopped) {
                 isStopped = false
                 Toast.makeText(root.context, "Is no longer stopped", Toast.LENGTH_SHORT).show()
@@ -51,7 +64,6 @@ class WorkTrackerFragment : Fragment() {
                 Toast.makeText(root.context, "Is no longer running", Toast.LENGTH_SHORT).show()
                 break_button.text = getString(R.string.break_reminder_button_text_start)            }
         }
-
 
         return root
     }

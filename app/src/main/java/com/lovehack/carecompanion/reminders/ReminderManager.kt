@@ -14,7 +14,7 @@ const val mealtimeAlarmId3 = 103
 const val waterReminderId = 104
 
 
-class ReminderManager(context: Context) {
+class ReminderManager() {
 
     fun setUpBedtimeReminder(context: Context, bedHour: Int, bedMinute: Int) {
         val time = Calendar.getInstance().apply {
@@ -23,21 +23,19 @@ class ReminderManager(context: Context) {
             set(Calendar.MINUTE, bedMinute)
         }
 
-        val intent = Intent(context, ReminderReceiver::class.java).let {
-            it.action = "bedtime"
-            PendingIntent.getBroadcast(context, bedtimeAlarmId, it, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
+        setAlarm(context, time, "bedtime", bedtimeAlarmId)
 
-        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
+//        val intent = Intent(context, ReminderReceiver::class.java).let {
+//            it.action = "bedtime"
+//            PendingIntent.getBroadcast(context, bedtimeAlarmId, it, PendingIntent.FLAG_UPDATE_CURRENT)
+//        }
+//
+//        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
     }
 
     fun removeBedtimeReminder(context: Context) {
-        val intent = Intent(context, ReminderReceiver::class.java).let {
-            PendingIntent.getBroadcast(context, bedtimeAlarmId, it, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
-        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(intent)
+        cancelAlarm(context, bedtimeAlarmId)
     }
 
     fun setUpMealTimeReminders(context: Context, meal: MealTime, hour: Int, minute: Int) {
@@ -53,22 +51,39 @@ class ReminderManager(context: Context) {
             set(Calendar.MINUTE, minute)
         }
 
-        val intent = Intent(context, ReminderReceiver::class.java).let {
-            it.action = "meal"
-            PendingIntent.getBroadcast(context, mealtimeAlarmId, it, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
+        setAlarm(context, time, "meal", bedtimeAlarmId)
 
-        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
+//        val intent = Intent(context, ReminderReceiver::class.java).let {
+//            it.action = "meal"
+//            PendingIntent.getBroadcast(context, mealtimeAlarmId, it, PendingIntent.FLAG_UPDATE_CURRENT)
+//        }
+//
+//        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
     }
 
     fun removeMealtimeAlarms(context: Context) {
         for (id in listOf<Int>(mealtimeAlarmId1, mealtimeAlarmId2, mealtimeAlarmId3)) {
-            val intent = Intent(context, ReminderReceiver::class.java).let {
-                PendingIntent.getBroadcast(context, id, it, PendingIntent.FLAG_UPDATE_CURRENT)
-            }
-            val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            alarmManager.cancel(intent)
+            cancelAlarm(context, id)
         }
+    }
+
+    fun setAlarm(context: Context, time: Calendar, action: String, id: Int) {
+        val intent = Intent(context, ReminderReceiver::class.java).let {
+            it.action = action
+            PendingIntent.getBroadcast(context, id, it, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time.timeInMillis, AlarmManager.INTERVAL_DAY, intent)
+//        alarmManager.setE
+    }
+
+    private fun cancelAlarm(context: Context, id: Int) {
+        val intent = Intent(context, ReminderReceiver::class.java).let {
+            PendingIntent.getBroadcast(context, id, it, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+        val alarmManager: AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(intent)
     }
 }

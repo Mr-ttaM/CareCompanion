@@ -35,7 +35,6 @@
         android:text="@string/break_reminder_text_start_1"
         android:textAlignment="center"
         android:textSize="48sp"
-        android:onClick="sendNotification"
         app:layout_constraintBottom_toTopOf="@+id/break_time_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"

@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createNotificationChannel() {
-        val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(Notification.CATEGORY_REMINDER, "Reminders", importance).apply {
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel("reminders_channel", "Reminders", importance).apply {
             description = "Send reminders for daily activities"
         }
         val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
