@@ -26,7 +26,7 @@
             android:title="@string/menu_help" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_happy_face"
+            android:icon="@drawable/ic_info_white"
             android:title="@string/menu_about" />
     </group>
 </menu>
