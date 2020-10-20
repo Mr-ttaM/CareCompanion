@@ -35,10 +35,7 @@ class HelpFragment : Fragment() {
 
         val drinkVideoView: VideoView = root.findViewById(R.id.drinkVideoView)
         LoopLocalVideo(drinkVideoView, R.raw.drink)
-
-        // scrolls to the top after loading videos
-        val helpScrollView: ScrollView = root.findViewById(R.id.helpScrollView)
-        helpScrollView.fullScroll(ScrollView.FOCUS_UP)
+        
         return root
     }
 }
