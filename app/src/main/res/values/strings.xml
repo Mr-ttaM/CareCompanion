@@ -11,6 +11,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_reminders">Reminders</string>
+    <string name="menu_notification_log">Notification Log</string>
     <string name="menu_work_tracker">Break Tracker</string>
     <string name="menu_puppies">Puppies</string>
     <string name="menu_settings">Settings</string>
@@ -52,9 +53,9 @@
     <string name="meal_reminder_body_2">Remember to eat! (2)</string>
 
     <string name="bedtime_reminder_title">Bedtime reminder</string>
-    <string name="bedtime_reminder_body_0">Remember to sleep! (0)</string>
-    <string name="bedtime_reminder_body_1">Remember to sleep! (1)</string>
-    <string name="bedtime_reminder_body_2">Remember to sleep! (2)</string>
+    <string name="bedtime_reminder_body_0">Time to snooze. Morning-you will thank you!</string>
+    <string name="bedtime_reminder_body_1">*yawn* Time to start thinking about bed.</string>
+    <string name="bedtime_reminder_body_2">Sleep time 💤💤💤💤💤</string>
 
     <string name="puppies_button">Give me puppy!</string>
     <string name="time_format">HH:mm  &#128394;</string>

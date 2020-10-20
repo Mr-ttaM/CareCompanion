@@ -14,12 +14,16 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.lovehack.carecompanion.R
+import com.lovehack.carecompanion.reminders.ReminderWorker
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.time.LocalTime
 import java.util.*
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class ReminderFragment : Fragment() {
 
@@ -73,10 +77,26 @@ class ReminderFragment : Fragment() {
         }
 
         bedtimeTimePicker.setOnClickListener {
-            pickTime(bedtimeTimePicker, root)
+            val cal = Calendar.getInstance()
+            val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                bedtimeTimePicker.text =
+                    SimpleDateFormat(getString(R.string.time_format)).format(cal.time)
+                val workRequest = OneTimeWorkRequestBuilder<ReminderWorker>()
+                    .addTag("meal")
+                    .setInitialDelay(3, TimeUnit.SECONDS)
+                    .build()
+                WorkManager.getInstance(requireView().context).enqueue(workRequest)
+            }
+            TimePickerDialog(
+                root.context,
+                bedtimeSetListener,
+                cal.get(Calendar.HOUR_OF_DAY),
+                cal.get(Calendar.MINUTE),
+                true
+            ).show()
         }
-
-
 
         return root
     }
@@ -93,12 +113,13 @@ class ReminderFragment : Fragment() {
         }
 
         // set initial state
+        switch.isChecked = true
         view.visibility = if (switch.isChecked) View.VISIBLE else View.GONE
     }
 
     private fun pickTime(bedtimeTimePicker: TextView, root: View) {
         val cal = Calendar.getInstance()
-        val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+        val bedtimeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
             bedtimeTimePicker.text =

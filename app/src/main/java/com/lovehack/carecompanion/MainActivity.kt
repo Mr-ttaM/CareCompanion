@@ -41,15 +41,15 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_reminders, R.id.nav_work_tracker, R.id.nav_puppies, R.id.nav_help,
-            R.id.nav_about), drawerLayout)
+            R.id.nav_reminders, R.id.nav_notification_log, R.id.nav_work_tracker, R.id.nav_puppies,
+            R.id.nav_help, R.id.nav_about), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 
     private fun createNotificationChannel() {
-        val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel(Notification.CATEGORY_REMINDER, "Reminders", importance).apply {
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel("reminders_channel", "Reminders", importance).apply {
             description = "Send reminders for daily activities"
         }
         val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
