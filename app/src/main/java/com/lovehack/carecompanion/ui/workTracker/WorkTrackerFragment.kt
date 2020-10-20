@@ -11,9 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_work_tracker.*
-import nl.dionsegijn.konfetti.models.Shape
-import nl.dionsegijn.konfetti.models.Size
-import org.w3c.dom.Text
 
 class WorkTrackerFragment : Fragment() {
 

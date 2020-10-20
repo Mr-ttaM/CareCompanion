@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sleep_reminder_switch"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.reminders.ReminderFragment">
@@ -21,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/water_title"
-                android:layout_width="match_parent"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:padding="@dimen/reminder_padding"
@@ -48,8 +47,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/water_contents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="335dp"
+                android:layout_height="38dp"
                 app:layout_constraintTop_toBottomOf="@+id/water_title">
 
                 <TextView
@@ -58,11 +57,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/reminder_padding"
                     android:layout_marginTop="@dimen/reminder_padding"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/reminder_padding"
                     android:text="@string/reminder_title_string_1"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/water_reminder_spinner"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/reminder_title_string_1" />
 
                 <Spinner
                     android:id="@+id/water_reminder_spinner"
@@ -73,7 +75,6 @@
                     android:layout_marginBottom="@dimen/reminder_padding"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/textView4"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textView3"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,17 +89,16 @@
                     android:text="@string/reminder_title_string_2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/water_reminder_spinner"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/reminder_title_string_2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_meal_reminder"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -106,16 +106,17 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         app:layout_constraintBottom_toTopOf="@+id/card_sleep_reminder"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_water_reminder">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/meal_title"
-                android:layout_width="match_parent"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:padding="@dimen/reminder_padding"
@@ -137,63 +138,43 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/meal_contents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="340dp"
+                android:layout_height="106dp"
                 app:layout_constraintTop_toBottomOf="@+id/meal_title">
 
                 <TextView
                     android:id="@+id/breakfast_text_view"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/reminder_padding"
                     android:layout_marginTop="@dimen/reminder_padding"
                     android:layout_marginEnd="@dimen/reminder_padding"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/reminder_title_meals_breakfast"
+                    app:layout_constraintBottom_toTopOf="@+id/lunch_text_view"
                     app:layout_constraintEnd_toStartOf="@+id/breakfast_time_picker"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/breakfast_time_picker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
-                    android:text="@string/reminder_meals_time_breakfast"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/breakfast_text_view"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/reminder_title_meals_breakfast" />
 
                 <TextView
                     android:id="@+id/lunch_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/reminder_padding"
-                    android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
-                    android:text="@string/reminder_title_meals_lunch"
-                    app:layout_constraintEnd_toStartOf="@+id/lunch_time_picker"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/breakfast_text_view" />
-
-                <TextView
-                    android:id="@+id/lunch_time_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
-                    android:text="@string/reminder_meals_time_lunch"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/lunch_text_view"
-                    app:layout_constraintTop_toBottomOf="@+id/breakfast_time_picker" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/reminder_title_meals_lunch"
+                    app:layout_constraintBottom_toTopOf="@+id/dinner_text_view"
+                    app:layout_constraintEnd_toStartOf="@+id/lunch_time_picker"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/breakfast_text_view"
+                    tools:text="@string/reminder_title_meals_lunch" />
 
                 <TextView
                     android:id="@+id/dinner_text_view"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/reminder_padding"
                     android:layout_marginTop="@dimen/reminder_padding"
@@ -203,19 +184,53 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/dinner_time_picker"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lunch_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/lunch_text_view"
+                    tools:text="@string/reminder_title_meals_dinner" />
+
+                <TextView
+                    android:id="@+id/breakfast_time_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/reminder_padding"
+                    android:layout_marginEnd="@dimen/reminder_padding"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/reminder_meals_time_breakfast"
+                    app:layout_constraintBottom_toTopOf="@+id/lunch_time_picker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/breakfast_text_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/reminder_meals_time_breakfast" />
+
+                <TextView
+                    android:id="@+id/lunch_time_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/reminder_padding"
+                    android:layout_marginEnd="@dimen/reminder_padding"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/reminder_meals_time_lunch"
+                    app:layout_constraintBottom_toTopOf="@+id/dinner_time_picker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/lunch_text_view"
+                    app:layout_constraintTop_toBottomOf="@+id/breakfast_time_picker"
+                    tools:text="@string/reminder_meals_time_lunch" />
 
                 <TextView
                     android:id="@+id/dinner_time_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="@dimen/reminder_padding"
                     android:layout_marginEnd="@dimen/reminder_padding"
                     android:layout_marginBottom="@dimen/reminder_padding"
                     android:text="@string/reminder_meals_time_dinner"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lunch_time_picker" />
+                    app:layout_constraintStart_toEndOf="@+id/dinner_text_view"
+                    app:layout_constraintTop_toBottomOf="@+id/lunch_time_picker"
+                    tools:text="@string/reminder_meals_time_dinner" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -224,31 +239,32 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_sleep_reminder"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_meal_reminder">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/sleep_title"
-                android:layout_width="match_parent"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:padding="@dimen/reminder_padding"
                 android:text="@string/reminder_title_sleep"
                 android:textColor="@android:color/white"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/reminder_title_sleep"/>
 
             <Switch
                 android:id="@+id/sleep_reminder_switch"
@@ -261,56 +277,65 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/sleep_contents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="340dp"
+                android:layout_height="73dp"
                 app:layout_constraintTop_toBottomOf="@+id/sleep_title">
 
                 <TextView
                     android:id="@+id/wake_up_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/reminder_padding"
-                    android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
-                    android:text="@string/reminder_title_sleep_wake"
-                    app:layout_constraintEnd_toStartOf="@+id/wake_up_time_picker"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/wake_up_time_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
-                    android:text="@string/reminder_sleep_default_wake"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/reminder_title_sleep_wake"
+                    app:layout_constraintBottom_toTopOf="@+id/bedtime_text_view"
+                    app:layout_constraintEnd_toStartOf="@+id/wake_up_time_picker"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/reminder_title_sleep_wake" />
 
                 <TextView
                     android:id="@+id/bedtime_text_view"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/reminder_padding"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/reminder_padding"
                     android:text="@string/reminder_title_sleep_bed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/bedtime_time_picker"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/wake_up_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/wake_up_text_view"
+                    tools:text="@string/reminder_title_sleep_bed" />
+
+                <TextView
+                    android:id="@+id/wake_up_time_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/reminder_sleep_default_wake"
+                    app:layout_constraintBottom_toTopOf="@+id/bedtime_time_picker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/wake_up_text_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/reminder_sleep_default_wake" />
 
                 <TextView
                     android:id="@+id/bedtime_time_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="@dimen/reminder_padding"
-                    android:layout_marginEnd="@dimen/reminder_padding"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/reminder_padding"
                     android:text="@string/reminder_sleep_default_bed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bedtime_text_view"
                     app:layout_constraintTop_toBottomOf="@+id/wake_up_time_picker" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

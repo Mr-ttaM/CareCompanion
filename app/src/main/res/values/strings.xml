@@ -38,7 +38,7 @@
     <string name="reminder_meals_time_lunch">13:00 &#128394;</string>
     <string name="reminder_meals_time_dinner">17:00 &#128394;</string>
     <string name="reminder_title_water">Water</string>
-    <string name="reminder_title_string_1">Remind me to drink</string>
+    <string name="reminder_title_string_1">Remind me</string>
     <string name="reminder_title_string_2">times per day</string>
 
     <string name="water_reminder_title">Water reminder</string>
