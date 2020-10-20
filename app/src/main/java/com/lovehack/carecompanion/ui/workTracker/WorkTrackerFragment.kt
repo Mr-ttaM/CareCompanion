@@ -61,7 +61,6 @@ class WorkTrackerFragment : Fragment() {
                 val time  = "1"
                 time_in_milli_seconds = time.toLong() *60000L
                 startTimer(time_in_milli_seconds)
-                Toast.makeText(root.context, "Is running", Toast.LENGTH_SHORT).show()
             } else {
                 isStopped = true
                 breakTimeTextView1.visibility = View.VISIBLE
@@ -69,8 +68,7 @@ class WorkTrackerFragment : Fragment() {
                 spinner.visibility = View.VISIBLE
                 breakTimeGoingTextView.visibility = View.INVISIBLE
                 breakTimeUntilTextView.visibility = View.INVISIBLE
-                Toast.makeText(root.context, "Is stopped", Toast.LENGTH_SHORT).show()
-                resetTimer()
+                countdown_timer.cancel()
                 break_button.text = getString(R.string.break_reminder_button_text_start)            }
         }
 
@@ -78,11 +76,19 @@ class WorkTrackerFragment : Fragment() {
         return root
     }
 
-    private fun pauseTimer() {
-
-        break_button.text = "Start"
+    override fun onPause() {
+        super.onPause()
         countdown_timer.cancel()
-        isStopped = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        countdown_timer.cancel()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        countdown_timer.cancel()
     }
 
     private fun startTimer(time_in_seconds: Long) {
