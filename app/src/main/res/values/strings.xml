@@ -24,6 +24,7 @@
     <string name="break_reminder_text_start_2">mins</string>
     <string name="break_reminder_going_text">You have been going for %1$d hours, %2$d minutes</string>
     <string name="break_reminder_until_next_text">%1$d:%2$d minutes until your next break</string>
+
     <string name="reminder_title_sleep">Sleep</string>
     <string name="reminder_title_sleep_wake">Wake up time</string>
     <string name="reminder_title_sleep_bed">Bed time</string>

@@ -5,20 +5,25 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.lovehack.carecompanion.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_work_tracker.*
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
+import org.w3c.dom.Text
 
 class WorkTrackerFragment : Fragment() {
 
     private lateinit var workTrackerViewModel: WorkTrackerViewModel
+    private lateinit var breakTimeGoingTextView : TextView
+    private lateinit var breakTimeUntilTextView : TextView
     private var isStopped : Boolean = true
-    private lateinit var timer: CountDownTimer
+    var START_MILLI_SECONDS = 60000L
+    lateinit var countdown_timer: CountDownTimer
+    var time_in_milli_seconds = 0L
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -40,19 +45,77 @@ class WorkTrackerFragment : Fragment() {
             spinner.adapter = adapter
         }
 
+        val breakTimeTextView1 : TextView = root.findViewById(R.id.break_textview_1)
+        val breakTimeTextView2 : TextView = root.findViewById(R.id.break_textview_2)
+        breakTimeUntilTextView = root.findViewById(R.id.break_time_until_next)
+        breakTimeGoingTextView = root.findViewById(R.id.break_time_going)
+
         val breakButton : Button = root.findViewById(R.id.break_button)
         breakButton.setOnClickListener {
             if(isStopped) {
                 isStopped = false
-                Toast.makeText(root.context, "Is no longer stopped", Toast.LENGTH_SHORT).show()
+                breakTimeTextView1.visibility = View.INVISIBLE
+                breakTimeTextView2.visibility = View.INVISIBLE
+                spinner.visibility = View.INVISIBLE
+                breakTimeGoingTextView.visibility = View.VISIBLE
+                breakTimeUntilTextView.visibility = View.VISIBLE
+                breakTimeGoingTextView.text = getString(R.string.break_reminder_going_text, 2, 34)
                 break_button.text = getString(R.string.break_reminder_button_text_stop)
+                val time  = "1"
+                time_in_milli_seconds = time.toLong() *60000L
+                startTimer(time_in_milli_seconds)
+                Toast.makeText(root.context, "Is running", Toast.LENGTH_SHORT).show()
             } else {
                 isStopped = true
-                Toast.makeText(root.context, "Is no longer running", Toast.LENGTH_SHORT).show()
+                breakTimeTextView1.visibility = View.VISIBLE
+                breakTimeTextView2.visibility = View.VISIBLE
+                spinner.visibility = View.VISIBLE
+                breakTimeGoingTextView.visibility = View.INVISIBLE
+                breakTimeUntilTextView.visibility = View.INVISIBLE
+                Toast.makeText(root.context, "Is stopped", Toast.LENGTH_SHORT).show()
+                resetTimer()
                 break_button.text = getString(R.string.break_reminder_button_text_start)            }
         }
 
 
         return root
     }
+
+    private fun pauseTimer() {
+
+        break_button.text = "Start"
+        countdown_timer.cancel()
+        isStopped = false
+    }
+
+    private fun startTimer(time_in_seconds: Long) {
+        countdown_timer = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+//                loadConfetti()
+                countdown_timer.cancel()
+                break_button.performClick()
+            }
+
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+                updateTextUI()
+            }
+        }
+        countdown_timer.start()
+        isStopped = false
+
+    }
+
+    private fun resetTimer() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        updateTextUI()
+    }
+
+    private fun updateTextUI() {
+        val minute = (time_in_milli_seconds / 1000) / 60
+        val seconds = (time_in_milli_seconds / 1000) % 60
+
+        breakTimeUntilTextView.text = getString(R.string.break_reminder_until_next_text, minute, seconds)
+    }
+
 }

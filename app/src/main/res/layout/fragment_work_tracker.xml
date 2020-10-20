@@ -13,7 +13,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/break_reminder_button_text_start"
         android:textSize="36sp"
         android:visibility="visible"
@@ -35,7 +35,6 @@
         android:text="@string/break_reminder_text_start_1"
         android:textAlignment="center"
         android:textSize="48sp"
-        android:onClick="sendNotification"
         app:layout_constraintBottom_toTopOf="@+id/break_time_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
@@ -73,4 +72,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/break_time_spinner"
         app:layout_constraintVertical_bias="0.146" />
+
+    <TextView
+        android:id="@+id/break_time_until_next"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/break_reminder_until_next_text"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/break_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/break_time_going"
+        tools:text="@string/break_reminder_until_next_text"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/break_time_going"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/break_reminder_going_text"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/break_time_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/break_reminder_going_text"
+        tools:visibility="invisible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
