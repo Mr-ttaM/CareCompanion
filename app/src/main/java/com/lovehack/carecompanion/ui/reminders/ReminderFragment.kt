@@ -113,6 +113,7 @@ class ReminderFragment : Fragment() {
         }
 
         // set initial state
+        switch.isChecked = true
         view.visibility = if (switch.isChecked) View.VISIBLE else View.GONE
     }
 
