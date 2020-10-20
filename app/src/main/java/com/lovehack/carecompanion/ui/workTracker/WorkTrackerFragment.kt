@@ -8,16 +8,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.lovehack.carecompanion.R
-import com.lovehack.carecompanion.reminders.ReminderManager
-import com.lovehack.carecompanion.reminders.ReminderWorker
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_work_tracker.*
-import java.util.concurrent.TimeUnit
 
 class WorkTrackerFragment : Fragment() {
 
@@ -49,6 +41,21 @@ class WorkTrackerFragment : Fragment() {
             spinner.adapter = adapter
         }
 
+        val time  = "10"
+        time_in_milli_seconds = time.toLong() *60000L
+
+        countdown_timer = object : CountDownTimer(time_in_milli_seconds, 1000) {
+            override fun onFinish() {
+                countdown_timer.cancel()
+                break_button.performClick()
+            }
+
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+                updateTextUI()
+            }
+        }
+
         val breakTimeTextView1 : TextView = root.findViewById(R.id.break_textview_1)
         val breakTimeTextView2 : TextView = root.findViewById(R.id.break_textview_2)
         breakTimeUntilTextView = root.findViewById(R.id.break_time_until_next)
@@ -56,11 +63,6 @@ class WorkTrackerFragment : Fragment() {
 
         val breakButton : Button = root.findViewById(R.id.break_button)
         breakButton.setOnClickListener {
-//            val workRequest = OneTimeWorkRequestBuilder<ReminderWorker>()
-//                .addTag("meal")
-//                .setInitialDelay(3, TimeUnit.SECONDS)
-//                .build()
-//            WorkManager.getInstance(requireView().context).enqueue(workRequest)
 
             if(isStopped) {
                 isStopped = false
@@ -71,9 +73,7 @@ class WorkTrackerFragment : Fragment() {
                 breakTimeUntilTextView.visibility = View.VISIBLE
                 breakTimeGoingTextView.text = getString(R.string.break_reminder_going_text, 2, 34)
                 break_button.text = getString(R.string.break_reminder_button_text_stop)
-                val time  = "1"
-                time_in_milli_seconds = time.toLong() *60000L
-                startTimer(time_in_milli_seconds)
+                startTimer()
             } else {
                 isStopped = true
                 breakTimeTextView1.visibility = View.VISIBLE
@@ -103,19 +103,7 @@ class WorkTrackerFragment : Fragment() {
         countdown_timer.cancel()
     }
 
-    private fun startTimer(time_in_seconds: Long) {
-        countdown_timer = object : CountDownTimer(time_in_seconds, 1000) {
-            override fun onFinish() {
-//                loadConfetti()
-                countdown_timer.cancel()
-                break_button.performClick()
-            }
-
-            override fun onTick(p0: Long) {
-                time_in_milli_seconds = p0
-                updateTextUI()
-            }
-        }
+    private fun startTimer() {
         countdown_timer.start()
         isStopped = false
 
