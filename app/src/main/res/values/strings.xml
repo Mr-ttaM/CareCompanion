@@ -51,5 +51,6 @@
     <string name="meal_reminder_body_2">Remember to eat! (2)</string>
 
     <string name="puppies_button">Give me puppy!</string>
+    <string name="time_format">HH:mm  &#128394;</string>
 
 </resources>

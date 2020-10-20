@@ -148,7 +148,7 @@
                 android:layout_marginEnd="10dp"
                 android:text="@string/reminder_title_meals_lunch"
                 app:layout_constraintBottom_toTopOf="@+id/dinner_text_view"
-                app:layout_constraintEnd_toStartOf="@+id/textView6"
+                app:layout_constraintEnd_toStartOf="@+id/lunch_time_picker"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/breakfast_text_view"
                 tools:text="@string/reminder_title_meals_lunch" />
@@ -163,7 +163,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/reminder_title_meals_dinner"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView7"
+                app:layout_constraintEnd_toStartOf="@+id/dinner_time_picker"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lunch_text_view"
                 tools:text="@string/reminder_title_meals_dinner" />
@@ -176,28 +176,28 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/reminder_meals_time_breakfast"
-                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintBottom_toTopOf="@+id/lunch_time_picker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/breakfast_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/meal_title"
                 tools:text="@string/reminder_meals_time_breakfast" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/lunch_time_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/reminder_meals_time_lunch"
-                app:layout_constraintBottom_toTopOf="@+id/textView7"
+                app:layout_constraintBottom_toTopOf="@+id/dinner_time_picker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/lunch_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/breakfast_time_picker"
                 tools:text="@string/reminder_meals_time_lunch" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/dinner_time_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -208,7 +208,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/dinner_text_view"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/lunch_time_picker"
                 tools:text="@string/reminder_meals_time_dinner" />
 
             <Switch
